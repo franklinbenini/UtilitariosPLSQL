@@ -5,6 +5,9 @@ CREATE OR REPLACE PACKAGE PKG_UTIL IS
 
   FUNCTION TIRACHARESPECIAL
     (P_STRING IN VARCHAR2) RETURN VARCHAR2;
+    
+  FUNCTION TIRAESPACOBRANCO
+    (P_STRING IN VARCHAR2) RETURN VARCHAR2;
 
   FUNCTION VALIDADATA
     (P_DATA IN VARCHAR2) RETURN VARCHAR2;
@@ -36,6 +39,14 @@ CREATE OR REPLACE PACKAGE BODY PKG_UTIL IS
     (P_STRING IN VARCHAR2) RETURN VARCHAR2 IS
   BEGIN
     RETURN REGEXP_REPLACE(P_STRING, '[^[:alnum:]'' '']', NULL);
+  END;
+
+  --------------------------------------------------------------------------------------
+
+  FUNCTION TIRAESPACOBRANCO
+    (P_STRING IN VARCHAR2) RETURN VARCHAR2 IS
+  BEGIN
+    RETURN REPLACE(P_STRING, ' ', '');
   END;
 
   --------------------------------------------------------------------------------------
